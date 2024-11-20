@@ -18,6 +18,17 @@ const SignInButton = () => {
   return (
     <>
       {session ? (
+        <>
+        {
+          session.user.role === 'admin' && (
+            <Link
+              href='/admin/manage-roles'
+              className='text-sm text-stone-500 hover:text-stone-600'
+            >
+              Manage Roles
+            </Link>
+          )
+        } 
         <Menu as='div' className='relative'>
           <Menu.Button>
             {session?.user?.image ? (
@@ -109,6 +120,7 @@ const SignInButton = () => {
             </Menu.Items>
           </Transition>
         </Menu>
+        </>
       ) : (
         <>
         <SignUpButton />        
